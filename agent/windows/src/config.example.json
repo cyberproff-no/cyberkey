@@ -1,0 +1,7 @@
+{
+  "discovery_mode": true,
+  "target_name_contains": "M1",
+  "target_address": "",
+  "test_mode": true,
+  "log_interval_seconds": 1
+}

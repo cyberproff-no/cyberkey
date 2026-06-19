@@ -1,0 +1,15 @@
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+
+# Logs og lokal konfigurasjon
+agent/windows/logs/
+agent/windows/src/config.json
+
+# OS/editor
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
