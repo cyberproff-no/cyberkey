@@ -1,22 +1,22 @@
 # Hardware Security Considerations
 
-Første versjon av CyberKey Slim benytter M1 Coin Beacon.
+The first version of CyberKey Slim uses the M1 Coin Beacon.
 
 ## BLE as a weak signal
 
-M1 støtter åpne annonseringsformater som Apple iBeacon og Google Eddystone. Slike BLE beacon-signaler kan observeres av andre enheter i nærheten og kan i enkelte tilfeller klones eller spoofes.
+M1 supports open advertising formats such as Apple iBeacon and Google Eddystone. Such BLE beacon signals can be observed by other nearby devices and can in some cases be cloned or spoofed.
 
-CyberKey behandler derfor BLE-nærhet som et svakt signal som kun kan brukes til restriktive handlinger, som å låse PC-en.
+CyberKey therefore treats BLE proximity as a weak signal that can only be used for restrictive actions, such as locking the PC.
 
-CyberKey skal ikke bruke BLE-nærhet til automatisk opplåsing eller sterk autentisering.
+CyberKey must not use BLE proximity for automatic unlocking or strong authentication.
 
 ## Range and signal exposure
 
-M1 har lang nok rekkevidde til at signalet kan fanges opp utenfor brukerens umiddelbare arbeidsområde, særlig ved høy Tx Power og åpne omgivelser.
+M1 has enough range that its signal can be captured outside the user's immediate work area, especially with high Tx Power and in open environments.
 
-For testing og senere bruk bør Tx Power reduseres til laveste nivå som fortsatt gir stabil deteksjon ved arbeidsplassen.
+For testing and later use, Tx Power should be reduced to the lowest level that still provides stable detection at the workstation.
 
-Standardprofilen bør først testes som levert, før Tx Power og advertising interval justeres.
+The default profile should first be tested as delivered before adjusting Tx Power and advertising interval.
 
 ## Core rule
 

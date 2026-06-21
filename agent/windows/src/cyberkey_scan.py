@@ -1,10 +1,10 @@
 """
-CyberKey BLE Scanner - Fase 1 Testverktøy
+CyberKey BLE Scanner - Phase 1 Test Tool
 
-Hensikt:
-- Oppdagelse (Discovery Mode) for å finne og identifisere BLE-beacons.
-- Dyp logging av RSSI, manufacturer data og service uuids for kalibrering.
-- Throttling implementert for å forhindre logg-bloat.
+Purpose:
+- Discovery (Discovery Mode) to find and identify BLE beacons.
+- Detailed logging of RSSI, manufacturer data, and service UUIDs for calibration.
+- Throttling implemented to prevent log bloat.
 """
 
 import asyncio
@@ -94,7 +94,7 @@ def detection_callback(device, advertisement_data):
     status = "UNCLASSIFIED"
 
     if config.get("discovery_mode", False):
-        print(f"[{timestamp}] [DISCOVERY] {name} ({device.address}) | RSSI: {rssi:3d} dBm | Svc/MFG: {'Ja' if mf_data or svc_data else 'Nei'}")
+        print(f"[{timestamp}] [DISCOVERY] {name} ({device.address}) | RSSI: {rssi:3d} dBm | Svc/MFG: {'Yes' if mf_data or svc_data else 'No'}")
     else:
         print(f"[{timestamp}] [TARGET] {name} ({device.address}) | RSSI: {rssi:3d} dBm")
 
@@ -112,16 +112,16 @@ def detection_callback(device, advertisement_data):
 
 async def main():
     print("==================================================")
-    print("CyberKey BLE Scanner (Datainnsamling) startet")
+    print("CyberKey BLE Scanner (Data Collection) started")
     print("==================================================")
 
     if config.get("discovery_mode", False):
-        print("DISCOVERY MODE ER AKTIV. Skanner alt i nærheten.")
+        print("DISCOVERY MODE IS ACTIVE. Scanning everything nearby.")
     else:
-        print(f"Låst til mål - Navn: '{config.get('target_name_contains')}', MAC: '{config.get('target_address')}'")
+        print(f"Locked to target - Name: '{config.get('target_name_contains')}', MAC: '{config.get('target_address')}'")
 
-    print(f"Logger til: {LOG_FILE.resolve()}")
-    print("Trykk Ctrl+C for å avslutte.\n")
+    print(f"Logging to: {LOG_FILE.resolve()}")
+    print("Press Ctrl+C to exit.\n")
 
     scanner = BleakScanner(detection_callback)
     await scanner.start()
@@ -130,10 +130,10 @@ async def main():
         while True:
             await asyncio.sleep(1)
     except KeyboardInterrupt:
-        print("\nAvslutter skanning...")
+        print("\nStopping scan...")
     finally:
         await scanner.stop()
-        print("Logg lagret. Klar for neste fase: analyze_rssi.py.")
+        print("Log saved. Ready for next phase: analyze_rssi.py.")
 
 if __name__ == "__main__":
     asyncio.run(main())

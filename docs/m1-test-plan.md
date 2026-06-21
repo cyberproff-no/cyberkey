@@ -1,22 +1,22 @@
 # M1 Test Plan
 
-## Formål
+## Purpose
 
-Finne ut om M1 Coin Beacon kan brukes som stabil nærhetsindikator for CyberKey Slim.
+Determine whether the M1 Coin Beacon can be used as a stable proximity indicator for CyberKey Slim.
 
-## Første testscenarioer
+## Initial test scenarios
 
-| Test | Varighet | Formål |
+| Test | Duration | Purpose |
 |---|---:|---|
-| M1 ved PC | 5 min | Normal near-RSSI |
-| M1 i lomme ved pult | 5 min | Kroppsdemping |
-| M1 1,5 m unna | 5 min | Praktisk grense |
-| M1 3 m unna | 5 min | Away-nivå |
-| Kropp mellom PC og M1 | 5 min | Signalblokkering |
-| Normal arbeidssituasjon | 30 min | Falske bortfall |
-| Gå bort fra PC | 10 repetisjoner | Tid til bortfall |
-| Komme tilbake | 10 repetisjoner | Tid til re-detection |
+| M1 at PC | 5 min | Normal near RSSI |
+| M1 in pocket at desk | 5 min | Body attenuation |
+| M1 1.5 m away | 5 min | Practical boundary |
+| M1 3 m away | 5 min | Away level |
+| Body between PC and M1 | 5 min | Signal blocking |
+| Normal work situation | 30 min | False dropouts |
+| Walk away from PC | 10 repetitions | Time to dropout |
+| Return to PC | 10 repetitions | Time to re-detection |
 
-## Notater
+## Notes
 
-Første fase skal ikke låse PC-en. Den skal kun logge data.
+The first phase must not lock the PC. It should only log data.

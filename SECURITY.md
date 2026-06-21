@@ -1,38 +1,38 @@
 # Security Policy
 
-CyberKey er designet med Privacy and Security by Design.
+CyberKey is designed according to Privacy and Security by Design principles.
 
 ## Scope
 
-CyberKey låser en Windows-arbeidsstasjon når en konfigurert BLE-beacon ikke lenger er i nærheten.
+CyberKey locks a Windows workstation when a configured BLE beacon is no longer nearby.
 
-CyberKey tilbyr ikke, og skal ikke tilby i MVP, funksjonalitet for å låse opp maskinen.
+CyberKey does not provide, and must not provide in the MVP, functionality for unlocking the machine.
 
 ## Trust Model
 
-BLE-radiomiljøet anses som utrygt.
+The BLE radio environment is considered untrusted.
 
-BLE beacon-signaler, inkludert statiske identifikatorer, kan observeres og i enkelte tilfeller kopieres eller spoofes av en angriper med radiotilgang.
+BLE beacon signals, including static identifiers, can be observed and in some cases copied or spoofed by an attacker with radio access.
 
-CyberKey behandler derfor BLE-nærhet utelukkende som et svakt signal egnet til å trigge restriktive handlinger, som å låse PC-en.
+CyberKey therefore treats BLE proximity exclusively as a weak signal suitable for triggering restrictive actions, such as locking the PC.
 
-CyberKey skal aldri behandle BLE-nærhet som sterk identitet eller autentisering.
+CyberKey must never treat BLE proximity as strong identity or authentication.
 
 ## Non-goals
 
-CyberKey MVP beskytter ikke mot:
+CyberKey MVP does not protect against:
 
-- malware på PC-en
-- fysisk angriper med kontroll over maskinen
-- avansert BLE-spoofing
-- kompromittert Windows-bruker
-- tyveri av beacon
-- passordtyveri
+- malware on the PC
+- a physical attacker with control over the machine
+- advanced BLE spoofing
+- a compromised Windows user account
+- beacon theft
+- password theft
 
 ## Reporting Security Issues
 
-Ikke åpne offentlige GitHub issues for sårbarheter.
+Do not open public GitHub issues for vulnerabilities.
 
-Rapporter sikkerhetsproblemer privat til:
+Report security issues privately to:
 
 kontakt-cyberproff@proton.me
