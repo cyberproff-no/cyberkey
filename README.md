@@ -1,34 +1,34 @@
 # CyberKey
 
-CyberKey er et lokalt sikkerhetsverktøy under CyberProff som reduserer risikoen for ulåste Windows-PC-er når brukeren forlater arbeidsplassen.
+CyberKey is a local security tool from CyberProff that reduces the risk of unlocked Windows PCs when the user leaves their workstation.
 
-Første MVP heter **CyberKey Slim** og bruker **M1 Coin Beacon** som personlig BLE-nøkkel.
+The first MVP is called **CyberKey Slim** and uses an **M1 Coin Beacon** as a personal BLE key.
 
 ## Status
 
-Tidlig MVP / testfase.
+Early MVP / testing phase.
 
-Første versjon fokuserer på:
+The first version focuses on:
 
 - M1 Coin Beacon
-- Lokal BLE-scanning på Windows
+- Local BLE scanning on Windows
 - RSSI-logging
-- Kalibrering av nærhet
-- Automatisk Windows-lås senere i testløpet
-- Ingen sky
-- Ingen GPS
-- Ingen kamera
-- Ingen automatisk opplåsing
+- Proximity calibration
+- Automatic Windows locking later in the test cycle
+- No cloud
+- No GPS
+- No camera
+- No automatic unlocking
 
-## Sikkerhetsprinsipp
+## Security principle
 
-CyberKey skal kun låse maskinen.
+CyberKey must only lock the machine.
 
-CyberKey skal ikke brukes til automatisk opplåsing, og erstatter ikke passord, Windows Hello eller annen autentisering.
+CyberKey must not be used for automatic unlocking, and it does not replace passwords, Windows Hello, or other authentication methods.
 
 BLE proximity is a weak signal suitable for triggering lock actions only.
 
-## Komme i gang
+## Getting started
 
 ```bash
 git clone https://github.com/cyberproff-no/cyberkey.git
@@ -41,37 +41,37 @@ copy src\config.example.json src\config.json
 python src\cyberkey_scan.py
 ```
 
-Analyser RSSI-logg:
+Analyze RSSI log:
 
 ```bash
 python src\analyze_rssi.py
 ```
 
-## MVP-mål
+## MVP goals
 
-Første fase skal samle data, ikke ta sikkerhetsbeslutninger.
+The first phase collects data and does not make security decisions.
 
-Målet er å finne ut:
+The goal is to determine:
 
-- hvordan M1 oppfører seg på Windows
-- hvilke BLE-identifikatorer som er stabile
-- hvordan RSSI varierer ved 0,5 m, 1,5 m og 3 m
-- hvor ofte signalet faller ut ved normal bruk
-- hvilke terskler som kan brukes senere i proximity engine
+- how M1 behaves on Windows
+- which BLE identifiers are stable
+- how RSSI varies at 0.5 m, 1.5 m, and 3 m
+- how often the signal drops during normal use
+- which thresholds can be used later in the proximity engine
 
-## Ikke i MVP
+## Not in MVP
 
-- automatisk opplåsing
-- sentral administrasjon
-- gateway-støtte
-- mobilapp
-- webdashboard
-- ansattsporing
-- H1-knappestøtte
-- H3 badge-modus
+- automatic unlocking
+- centralized administration
+- gateway support
+- mobile app
+- web dashboard
+- employee tracking
+- H1 button support
+- H3 badge mode
 
-## Lisens
+## License
 
-Programkode er lisensiert under GPL-3.0-or-later.
+Program code is licensed under GPL-3.0-or-later.
 
-CyberKey- og CyberProff-navn, logoer og merkevare er ikke lisensiert for kommersiell bruk uten skriftlig tillatelse.
+The CyberKey and CyberProff names, logos, and brand are not licensed for commercial use without written permission.

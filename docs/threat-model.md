@@ -2,7 +2,7 @@
 
 ## Goal
 
-CyberKey skal redusere risikoen for ulåste Windows-arbeidsstasjoner når brukeren forlater arbeidsplassen.
+CyberKey should reduce the risk of unlocked Windows workstations when the user leaves their workstation.
 
 ## Core Rule
 
@@ -11,49 +11,49 @@ BLE proximity is a weak signal suitable for triggering lock actions only.
 ## Assets
 
 - Windows session lock state
-- lokal CyberKey-konfigurasjon
-- valgt BLE beacon-identifikator
-- lokale testlogger
+- local CyberKey configuration
+- selected BLE beacon identifier
+- local test logs
 
 ## Trust Boundaries
 
-- BLE-radiomiljøet er utrygt
-- beacon-identitet kan være spoofbar
-- lokal Windows-brukerkontekst er betrodd i MVP
-- ingen sky er nødvendig eller betrodd
+- the BLE radio environment is untrusted
+- beacon identity can be spoofed
+- the local Windows user context is trusted in the MVP
+- no cloud is required or trusted
 
 ## Main Risks
 
 ### BLE spoofing
 
-En angriper kan forsøke å kopiere eller gjenskape beacon-signalet.
+An attacker may attempt to copy or recreate the beacon signal.
 
 Mitigation:
 
 - lock-only design
-- ingen automatisk opplåsing
-- ingen hemmeligheter lagret på beacon
-- åpen dokumentasjon av begrensningen
+- no automatic unlocking
+- no secrets stored on the beacon
+- open documentation of the limitation
 
 ### False locking
 
-BLE-signal kan falle ut på grunn av interferens, kroppsdemping eller radioforhold.
+BLE signals can drop due to interference, body attenuation, or radio conditions.
 
 Mitigation:
 
-- testmodus først
-- RSSI-glatting senere
-- timeout-basert logikk senere
-- kalibrering
-- cooldown etter låsing
+- test mode first
+- RSSI smoothing later
+- timeout-based logic later
+- calibration
+- cooldown after locking
 
 ### Privacy misuse
 
-Et nærhetssystem kan misbrukes til ansattsporing.
+A proximity system can be misused for employee tracking.
 
 Mitigation:
 
-- ingen sky i MVP
-- ingen sentral tracking
-- lokale logger
-- tydelig personverndokumentasjon
+- no cloud in MVP
+- no centralized tracking
+- local logs
+- clear privacy documentation

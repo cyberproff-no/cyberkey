@@ -1,6 +1,6 @@
 # CyberKey Windows Agent
 
-Dette er første Windows-baserte testområde for CyberKey.
+This is the first Windows-based test area for CyberKey.
 
 ## Setup
 
@@ -11,18 +11,18 @@ pip install -r requirements.txt
 copy src\config.example.json src\config.json
 ```
 
-## Kjør scanner
+## Run scanner
 
 ```bash
 python src\cyberkey_scan.py
 ```
 
-## Kjør analyse
+## Run analysis
 
 ```bash
 python src\analyze_rssi.py
 ```
 
-## Viktig
+## Important
 
-Første fase samler kun data. Den låser ikke Windows.
+The first phase only collects data. It does not lock Windows.

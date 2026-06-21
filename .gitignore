@@ -4,7 +4,7 @@ __pycache__/
 .venv/
 venv/
 
-# Logs og lokal konfigurasjon
+# Logs and local configuration
 agent/windows/logs/
 agent/windows/src/config.json
 

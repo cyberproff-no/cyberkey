@@ -1,22 +1,22 @@
 # M1 Test Results
 
-Dette dokumentet fylles ut når M1-brikkene er testet.
+This document is filled out when the M1 tags have been tested.
 
-## Testmiljø
+## Test environment
 
 - PC:
-- Windows-versjon:
-- Bluetooth-adapter:
-- M1-konfigurasjon:
+- Windows version:
+- Bluetooth adapter:
+- M1 configuration:
 - Advertising interval:
 - Tx Power:
 
-## Resultater
+## Results
 
-| Scenario | RSSI min | RSSI max | RSSI avg | Dropouts | Notater |
+| Scenario | RSSI min | RSSI max | RSSI avg | Dropouts | Notes |
 |---|---:|---:|---:|---:|---|
-| Ved PC | | | | | |
-| I lomme | | | | | |
+| At PC | | | | | |
+| In pocket | | | | | |
 | 1,5 m | | | | | |
 | 3 m | | | | | |
-| Kropp mellom | | | | | |
+| Body between | | | | | |

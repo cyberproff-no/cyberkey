@@ -1,23 +1,23 @@
 # Privacy Policy
 
-CyberKey er bygget etter prinsippet Privacy by Design.
+CyberKey is built according to the Privacy by Design principle.
 
 ## Local-first
 
-CyberKey MVP fungerer lokalt på brukerens Windows-maskin.
+CyberKey MVP runs locally on the user's Windows machine.
 
-## Ingen skytjenester
+## No cloud services
 
-CyberKey MVP sender ikke telemetri, posisjonsdata eller BLE-data til eksterne servere.
+CyberKey MVP does not send telemetry, location data, or BLE data to external servers.
 
-## Ingen sporing
+## No tracking
 
-CyberKey er et verktøy for å låse den lokale maskinen. Det er ikke et verktøy for å overvåke ansattes tilstedeværelse, lokasjon eller arbeidstid.
+CyberKey is a tool for locking the local machine. It is not a tool for monitoring employee presence, location, or working hours.
 
 ## Minimal logging
 
-Logger brukes kun for lokal testing og kalibrering av maskinvare og signalstyrke.
+Logs are used only for local testing and calibration of hardware and signal strength.
 
-Loggene kan inneholde timestamp, BLE-adresse, device name, RSSI, manufacturer data, service UUIDs og service data.
+Logs may contain timestamp, BLE address, device name, RSSI, manufacturer data, service UUIDs, and service data.
 
-Logger lagres lokalt i `agent/windows/logs/` og skal ikke sjekkes inn i Git.
+Logs are stored locally in `agent/windows/logs/` and must not be committed to Git.

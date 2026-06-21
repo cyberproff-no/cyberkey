@@ -1,6 +1,6 @@
 # CyberKey Architecture
 
-CyberKey MVP består av en enkel lokal Windows-agent.
+CyberKey MVP consists of a simple local Windows agent.
 
 ```text
 M1 Coin Beacon
@@ -16,8 +16,8 @@ Proximity engine later
 Windows lock later
 ```
 
-## Første fase
+## First phase
 
-Første fase implementerer kun BLE discovery, rå logging og enkel RSSI-analyse.
+The first phase implements only BLE discovery, raw logging, and basic RSSI analysis.
 
-Ingen låselogikk skal aktiveres før det finnes nok testdata.
+No locking logic should be activated until enough test data exists.
