@@ -6,15 +6,21 @@ The first MVP is called **CyberKey Slim** and uses an **M1 Coin Beacon** as a pe
 
 ## Status
 
-Early MVP / testing phase.
+Prototype / testing phase.
 
-The first version focuses on:
+The Windows scanner collects local BLE and RSSI data. The standalone proximity and policy engines are implemented and unit-tested.
+
+The proximity engine produces proximity states and one-shot lock-request decisions. The policy engine applies test-mode, idle-time, cooldown, and presentation-mode rules. Neither component is yet connected to the scanner or to Windows locking.
+
+Automatic locking is not enabled in the current end-to-end agent.
+
+Current focus:
 
 - M1 Coin Beacon
 - Local BLE scanning on Windows
-- RSSI-logging
-- Proximity calibration
-- Automatic Windows locking later in the test cycle
+- Local RSSI logging and calibration
+- Proximity state evaluation
+- Synthetic unit tests for proximity behavior
 - No cloud
 - No GPS
 - No camera
@@ -30,34 +36,39 @@ BLE proximity is a weak signal suitable for triggering lock actions only.
 
 ## Getting started
 
-```bash
+Run the following in PowerShell:
+
+```powershell
 git clone https://github.com/cyberproff-no/cyberkey.git
-cd cyberkey
-cd agent/windows
+Set-Location .\agent\windows
+
 python -m venv .venv
-.venv\Scripts\activate
-pip install -r requirements.txt
-copy src\config.example.json src\config.json
+\.venv\Scripts\Activate.ps1
+
+python -m pip install -r requirements.txt
+Copy-Item src\config.example.json src\config.json
+
 python src\cyberkey_scan.py
 ```
 
+The default configuration runs in discovery mode and writes local RSSI logs. Edit `src\config.json` before testing against a specific beacon.
+
 Analyze RSSI log:
 
-```bash
+```powershell
 python src\analyze_rssi.py
 ```
 
 ## MVP goals
 
-The first phase collects data and does not make security decisions.
+The MVP currently has two separate goals:
 
-The goal is to determine:
+1. Collect local BLE and RSSI data from the M1 Coin Beacon.
+2. Validate the proximity engine with calibrated RSSI values and synthetic tests.
 
-- how M1 behaves on Windows
-- which BLE identifiers are stable
-- how RSSI varies at 0.5 m, 1.5 m, and 3 m
-- how often the signal drops during normal use
-- which thresholds can be used later in the proximity engine
+The current scanner does not trigger policy decisions or Windows locking.
+
+The next integration phase will connect scanner observations to proximity and policy evaluation while Windows locking remains disabled by default.
 
 ## Not in MVP
 
