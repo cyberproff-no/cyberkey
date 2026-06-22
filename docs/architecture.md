@@ -1,36 +1,63 @@
 # CyberKey Architecture
 
-CyberKey MVP consists of a simple local Windows agent.
+## Current Status
+CyberKey is in an early MVP and testing phase.
 
-```text
-M1 Coin Beacon
-    ↓
-BLE scanner
-    ↓
-RSSI logging
-    ↓
-Analysis
-    ↓
-Proximity engine later
-    ↓
-Windows lock later
+The physical M1 Coin Beacon is not yet available for validation.
+
+The Windows BLE scanner collects local BLE and RSSI data. The proximity and policy engines are implemented and unit-tested with synthetic inputs.
+
+The proximity and policy engines are not yet connected to the scanner or to Windows locking. Automatic Windows locking is not enabled in the current end-to-end agent.
+
+## Current Runtime Path
+
 ```
+cyberkey_scan.py
+    ↓
+Local RSSI logging
+    ↓
+analyze_rssi.py
+```
+This runtime path is used for BLE discovery, local logging, and later RSSI calibration.
 
-## First phase
+## Implemented Components Not Yet Runtime-Connected
 
-The first phase implements only BLE discovery, raw logging, and basic RSSI analysis.
+```
+proximity.py
+    ↓
+policy.py
+    ↓
+locker.py
+```
+These components are implemented as separate modules but are not yet connected to the scanner or to each other in the running agent.
 
-No locking logic should be activated until enough test data exists.
+## Planned Integration Path
+
+```
+cyberkey_scan.py
+    ↓
+proximity.py
+    ↓
+policy.py
+    ↓
+locker.py
+    ↓
+Windows LockWorkStation
+```
+This integration path remains disabled until M1 hardware validation, RSSI calibration, and end-to-end testing have been completed.
 
 ## Windows Agent Responsibility Separation
 
-- `cyberkey_scan.py` receives BLE advertisements and forwards raw RSSI observations.
+- `cyberkey_scan.py` receives BLE advertisements and records raw RSSI observations locally.
 - `proximity.py` evaluates RSSI data and provides proximity state plus lock-request decision data only.
-- `policy.py` will later apply operational rules such as test mode, cooldown, idle checks, and presentation mode.
+- `policy.py` applies operational rules such as test mode, cooldown, idle checks, disabled mode, and presentation mode.
 - `locker.py` is the only component allowed to call the Windows locking API.
 
-### Security invariants
+## Security Invariants
 
-- `proximity.py` must never call `LockWorkStation()` directly.
-- BLE proximity is a weak signal and may only trigger restrictive actions such as locking.
+- BLE proximity is a weak signal.
+- BLE may only contribute to restrictive actions such as locking Windows.
 - BLE must never be used for unlocking, authentication, identity verification, or standalone access control.
+- `proximity.py` must never call `LockWorkStation()` directly.
+- `policy.py` must never call `LockWorkStation()` directly.
+- Automatic Windows locking remains disabled until controlled runtime integration and hardware validation are complete.
