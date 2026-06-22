@@ -162,7 +162,7 @@ The tests cover:
 5. Missing packets → `LOST`
 6. `AWAY` long enough → one lock request
 7. `LOST` long enough → one lock request
-8. Beacon returns → lock latch resets
+8. Beacon returns and reaches stable `NEAR` → lock latch resets
 9. Lock requests cannot repeat without a new return and departure cycle
 
 ## Future Work
