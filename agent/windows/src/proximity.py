@@ -120,7 +120,6 @@ class ProximityEngine:
 
         if returning_from_lost:
             self.rssi_window.clear()
-            self._reset_lock_latch()
             self._set_state(ProximityState.UNKNOWN, now)
 
         self.rssi_window.append(int(rssi))

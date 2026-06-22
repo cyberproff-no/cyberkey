@@ -128,7 +128,7 @@ class ProximityEngineTests(unittest.TestCase):
         self.assertEqual(engine.lock_reason, "lost_timeout")
         self.assertFalse(engine.should_lock(now=11.0))
 
-    def test_beacon_return_after_lost_resets_lock_latch(self) -> None:
+    def test_beacon_return_after_lost_rearms_only_after_near(self) -> None:
         engine = self.make_engine(
             lost_after_seconds=5,
             lock_after_lost_seconds=3,
@@ -144,8 +144,8 @@ class ProximityEngineTests(unittest.TestCase):
             engine.update(-55, now=11.0),
             ProximityState.UNKNOWN,
         )
-        self.assertFalse(engine.lock_requested)
-        self.assertIsNone(engine.lock_reason)
+        self.assertTrue(engine.lock_requested)
+        self.assertEqual(engine.lock_reason, "lost_timeout")
 
         self.assertEqual(
             engine.update(-56, now=12.0),
@@ -155,6 +155,8 @@ class ProximityEngineTests(unittest.TestCase):
             engine.update(-54, now=13.0),
             ProximityState.NEAR,
         )
+        self.assertFalse(engine.lock_requested)
+        self.assertIsNone(engine.lock_reason)
 
     def test_latch_rearms_only_after_stable_near_return(self) -> None:
         engine = self.make_engine(lock_after_away_seconds=4)
