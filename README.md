@@ -46,7 +46,7 @@ Run the following in PowerShell:
 
 ```powershell
 git clone https://github.com/cyberproff-no/cyberkey.git
-Set-Location .\agent\windows
+Set-Location .\cyberkey\agent\windows
 
 python -m venv .venv
 \.venv\Scripts\Activate.ps1
@@ -70,7 +70,7 @@ python src\analyze_rssi.py
 The MVP currently has two separate goals:
 
 1. Collect local BLE and RSSI data from the M1 Coin Beacon.
-2. Validate the proximity engine with calibrated RSSI values and synthetic tests.
+2. Validate the proximity and policy engines with calibrated RSSI values and synthetic tests.
 
 The current scanner does not trigger policy decisions or Windows locking.
 
