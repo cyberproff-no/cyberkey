@@ -14,6 +14,12 @@ The proximity engine produces proximity states and one-shot lock-request decisio
 
 Automatic locking is not enabled in the current end-to-end agent.
 
+Hardware status:
+
+The physical M1 Coin Beacon is not yet available for validation.
+
+Current proximity and policy behavior has been verified with synthetic tests. Nearby BLE discovery has been verified separately. M1-specific discovery, RSSI calibration, identifier validation, and end-to-end testing remain pending until the hardware is available.
+
 Current focus:
 
 - M1 Coin Beacon
