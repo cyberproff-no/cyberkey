@@ -8,9 +8,9 @@ The first MVP is called **CyberKey Slim** and uses an **M1 Coin Beacon** as a pe
 
 Prototype / testing phase.
 
-The Windows scanner is runnable and collects local BLE and RSSI data. A standalone proximity engine has been implemented and unit-tested.
+The Windows scanner collects local BLE and RSSI data. The standalone proximity and policy engines are implemented and unit-tested.
 
-The proximity engine produces proximity states and one-shot lock-request decisions, but it is not yet connected to the scanner, a policy engine, or automatic Windows locking.
+The proximity engine produces proximity states and one-shot lock-request decisions. The policy engine applies test-mode, idle-time, cooldown, and presentation-mode rules. Neither component is yet connected to the scanner or to Windows locking.
 
 Automatic locking is not enabled in the current end-to-end agent.
 
@@ -38,9 +38,9 @@ BLE proximity is a weak signal suitable for triggering lock actions only.
 
 Run the following in PowerShell:
 
-```
+```powershell
 git clone https://github.com/cyberproff-no/cyberkey.git
-Set-Location cyberkey\agent\windows
+Set-Location .\agent\windows
 
 python -m venv .venv
 \.venv\Scripts\Activate.ps1
@@ -55,7 +55,7 @@ The default configuration runs in discovery mode and writes local RSSI logs. Edi
 
 Analyze RSSI log:
 
-```
+```powershell
 python src\analyze_rssi.py
 ```
 
@@ -68,7 +68,7 @@ The MVP currently has two separate goals:
 
 The current scanner does not trigger policy decisions or Windows locking.
 
-The next implementation phase is a policy layer that can evaluate test mode, cooldowns, idle state, and other safety conditions before any lock action is allowed.
+The next integration phase will connect scanner observations to proximity and policy evaluation while Windows locking remains disabled by default.
 
 ## Not in MVP
 
