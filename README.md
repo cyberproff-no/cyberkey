@@ -1,94 +1,120 @@
 # CyberKey
+CyberKey is a local security tool from CyberProff that reduces the risk of unlocked Windows PCs when a user leaves their workstation.
 
-CyberKey is a local security tool from CyberProff that reduces the risk of unlocked Windows PCs when the user leaves their workstation.
-
-The first MVP is called **CyberKey Slim** and uses an **M1 Coin Beacon** as a personal BLE key.
+The first MVP is called **CyberKey Slim** and is designed to evaluate an **M1 Coin Beacon** as a local BLE proximity signal.
 
 ## Status
+Prototype and testing phase.
 
-Prototype / testing phase.
+CyberKey currently has two separate local paths:
 
-The Windows scanner collects local BLE and RSSI data. The standalone proximity and policy engines are implemented and unit-tested.
+```
+cyberkey_scan.py
+	-> local RSSI logging
+	-> analyze_rssi.py
+```
+This path is used for BLE discovery, local data collection, and later RSSI calibration.
 
-The proximity engine produces proximity states and one-shot lock-request decisions. The policy engine applies test-mode, idle-time, cooldown, and presentation-mode rules. Neither component is yet connected to the scanner or to Windows locking.
+```
+synthetic RSSI event or timeout tick
+	-> DryRunAgent
+	-> ProximityEngine
+	-> PolicyEngine
+	-> NONE or WOULD_LOCK
+```
+The dry-run path uses deterministic synthetic input and forces `test_mode=True`.
 
-Automatic locking is not enabled in the current end-to-end agent.
+The current end-to-end agent does not use live BLE scanning, does not import `locker.py`, does not call Windows APIs, and does not lock Windows.
+
+Automatic Windows locking remains disabled.
 
 Hardware status:
 
 The physical M1 Coin Beacon is not yet available for validation.
 
-Current proximity and policy behavior has been verified with synthetic tests. Nearby BLE discovery has been verified separately. M1-specific discovery, RSSI calibration, identifier validation, and end-to-end testing remain pending until the hardware is available.
+M1-specific discovery, identifier validation, RSSI calibration, packet-loss measurement, and hardware end-to-end validation remain pending until the beacon is available.
 
-Current focus:
+## Current Focus
 
-- M1 Coin Beacon
-- Local BLE scanning on Windows
+- M1 Coin Beacon hardware validation
+- Local BLE discovery on Windows
 - Local RSSI logging and calibration
 - Proximity state evaluation
-- Synthetic unit tests for proximity behavior
+- Synthetic dry-run testing
+- Local-only operation
 - No cloud
 - No GPS
 - No camera
+- No employee tracking
 - No automatic unlocking
 
-## Security principle
+## Security Principle
+BLE proximity is a weak signal.
 
-CyberKey must only lock the machine.
+CyberKey may use BLE proximity only as one input toward a restrictive action such as locking a Windows session.
 
-CyberKey must not be used for automatic unlocking, and it does not replace passwords, Windows Hello, or other authentication methods.
+CyberKey must not use BLE proximity for:
 
-BLE proximity is a weak signal suitable for triggering lock actions only.
+- Automatic unlocking
+- Authentication
+- Identity verification
+- Standalone access control
 
-## Getting started
+CyberKey does not replace passwords, Windows Hello, or other authentication methods.
 
+## Getting Started
 Run the following in PowerShell:
 
-```powershell
+```
 git clone https://github.com/cyberproff-no/cyberkey.git
 Set-Location .\cyberkey\agent\windows
 
 python -m venv .venv
-\.venv\Scripts\Activate.ps1
+.\.venv\Scripts\Activate.ps1
 
 python -m pip install -r requirements.txt
 Copy-Item src\config.example.json src\config.json
 
 python src\cyberkey_scan.py
 ```
-
 The default configuration runs in discovery mode and writes local RSSI logs. Edit `src\config.json` before testing against a specific beacon.
 
-Analyze RSSI log:
+Analyze an RSSI log:
 
-```powershell
+```
 python src\analyze_rssi.py
 ```
+Run the synthetic test suite:
 
-## MVP goals
+```
+python -m unittest discover -s tests -p "test_*.py" -v
+```
 
+## MVP Goals
 The MVP currently has two separate goals:
 
 1. Collect local BLE and RSSI data from the M1 Coin Beacon.
-2. Validate the proximity and policy engines with calibrated RSSI values and synthetic tests.
+2. Validate proximity and policy behavior with deterministic synthetic tests.
 
-The current scanner does not trigger policy decisions or Windows locking.
+The scanner does not trigger policy decisions or Windows locking.
 
-The next integration phase will connect scanner observations to proximity and policy evaluation while Windows locking remains disabled by default.
+A future live adapter may pass validated local beacon RSSI samples into the existing dry-run interface. That future work remains `test_mode=True` and `WOULD_LOCK` only until separate hardware validation and safety review are complete.
 
 ## Not in MVP
 
-- automatic unlocking
-- centralized administration
-- gateway support
-- mobile app
-- web dashboard
-- employee tracking
+- Automatic Windows locking
+- Automatic unlocking
+- Authentication or identity verification
+- Standalone access control
+- Centralized administration
+- Gateway support
+- Mobile app
+- Web dashboard
+- Employee tracking
 - H1 button support
 - H3 badge mode
 
 ## License
-
 Program code is licensed under GPL-3.0-or-later.
 
 The CyberKey and CyberProff names, logos, and brand are not licensed for commercial use without written permission.
