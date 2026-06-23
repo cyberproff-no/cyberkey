@@ -1,4 +1,8 @@
 # CyberKey
+> Status: Prototype — synthetic dry-run integration complete.
+> M1 hardware validation pending.
+> Automatic Windows locking is disabled.
+
 CyberKey is a local security tool from CyberProff that reduces the risk of unlocked Windows PCs when a user leaves their workstation.
 
 The first MVP is called **CyberKey Slim** and is designed to evaluate an **M1 Coin Beacon** as a local BLE proximity signal.
