@@ -1,0 +1,65 @@
+CyberKey Notice
+
+Copyright (C) 2026 CyberProff.no and contributors.
+
+CyberKey software source code is licensed under the GNU General Public
+License version 3.0 or later ("GPL-3.0-or-later"). See the LICENSE file
+for the complete license text.
+
+CyberKey is a local-first Bluetooth Low Energy proximity-lock agent for
+Windows. The software may interact with compatible third-party Bluetooth
+Low Energy beacons and related hardware.
+
+Third-party hardware
+
+CyberKey does not manufacture, supply, certify, warrant, or license
+Bluetooth beacons or other physical hardware used together with the
+software.
+
+Any third-party beacon, firmware, mobile application, documentation,
+product name, trademark, logo, device identifier, or related material
+remains the property of its respective owner and may be subject to
+separate terms, licenses, warranties, support arrangements, and
+compatibility limitations.
+
+Use of a third-party Bluetooth beacon with CyberKey does not create any
+partnership, endorsement, sponsorship, certification, or affiliation
+between CyberProff.no and the relevant hardware manufacturer.
+
+Compatibility
+
+Hardware compatibility may vary depending on operating system version,
+Bluetooth adapter, beacon firmware, beacon configuration, environmental
+conditions, signal interference, distance, battery condition, and other
+factors.
+
+CyberKey is provided without warranty. Users are responsible for testing
+their own configuration before relying on it for security-sensitive,
+operational, or business-critical use.
+
+Safety and security
+
+CyberKey may trigger Windows locking based on Bluetooth proximity signals.
+Bluetooth signal strength and presence detection are inherently affected
+by physical surroundings and radio conditions.
+
+CyberKey should not be treated as a replacement for strong device
+authentication, disk encryption, operating-system security controls,
+endpoint protection, access control policies, or organizational security
+procedures.
+
+Trademark notice
+
+The GNU GPL does not grant permission to use the CyberKey, CyberProff,
+CyberProff.no, or related names, logos, product names, visual identity,
+domains, or branding.
+
+You may accurately describe that your software is based on or derived
+from CyberKey where required by the GPL, provided that such description
+does not imply endorsement, certification, partnership, sponsorship, or
+official origin.
+
+Commercial use of CyberKey or CyberProff branding requires prior written
+permission from CyberProff.no.
+
+Contact: kontakt-cyberproff@proton.me

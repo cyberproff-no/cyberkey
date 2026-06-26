@@ -118,7 +118,54 @@ A future live adapter may pass validated local beacon RSSI samples into the exis
 - H1 button support
 - H3 badge mode
 
-## License
-Program code is licensed under GPL-3.0-or-later.
+## License, Hardware and Trademarks
 
-The CyberKey and CyberProff names, logos, and brand are not licensed for commercial use without written permission.
+### Software license
+
+CyberKey source code is licensed under the
+GNU General Public License v3.0 or later (`GPL-3.0-or-later`).
+
+This means you may inspect, use, modify, and redistribute the software,
+including commercially, provided that redistributed derivative works are
+made available under the same GPL-compatible terms and include the
+corresponding source code.
+
+See [LICENSE](LICENSE) for the complete license text.
+
+### Third-party hardware
+
+CyberKey is software that can work with compatible third-party Bluetooth
+Low Energy beacons.
+
+CyberProff.no does not manufacture, supply, certify, warrant, or license
+the beacon hardware itself. Hardware compatibility may vary depending on
+the beacon model, firmware, configuration, Bluetooth adapter, operating
+system, physical environment, and radio conditions.
+
+The initial CyberKey Slim prototype is designed around the M1 Coin Beacon,
+but this does not imply endorsement, partnership, sponsorship, or
+certification by the beacon manufacturer.
+
+### Security notice
+
+CyberKey uses Bluetooth proximity signals as one input to Windows locking
+behavior. Bluetooth signal conditions can change due to distance,
+interference, walls, battery level, device placement, and environmental
+factors.
+
+CyberKey is not a replacement for strong authentication, disk encryption,
+endpoint protection, device management, or security policy enforcement.
+
+Test your own setup before relying on CyberKey in security-sensitive or
+business-critical environments.
+
+### Trademarks
+
+CyberKey, CyberKey Slim, CyberProff, CyberProff.no, associated logos,
+product names, and visual identity are not licensed under GPLv3.
+
+Forks and derivative works must use their own name and branding and must
+not imply endorsement, certification, sponsorship, or affiliation with
+CyberProff.no.
+
+See [TRADEMARKS.md](TRADEMARKS.md) for the complete trademark policy.
