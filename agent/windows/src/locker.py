@@ -1,3 +1,7 @@
+# SPDX-License-Identifier: GPL-3.0-or-later
+# Copyright (C) 2026 CyberProff.no and contributors.
+# This file is part of CyberKey.
+
 """
 CyberKey Windows Locker
 
@@ -15,6 +19,8 @@ It must never be used for unlock or authentication.
 import argparse
 import ctypes
 import platform
+
+from metadata import format_startup_banner
 
 
 def is_windows() -> bool:
@@ -48,6 +54,12 @@ def would_lock_now(reason: str = "manual-test") -> None:
 def main() -> None:
     parser = argparse.ArgumentParser(
         description="CyberKey Windows lock helper"
+    )
+
+    parser.add_argument(
+        "--version",
+        action="version",
+        version=format_startup_banner(),
     )
 
     parser.add_argument(

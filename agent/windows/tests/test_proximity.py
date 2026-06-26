@@ -1,3 +1,7 @@
+# SPDX-License-Identifier: GPL-3.0-or-later
+# Copyright (C) 2026 CyberProff.no and contributors.
+# This file is part of CyberKey.
+
 """Synthetic tests for the CyberKey proximity state machine."""
 
 from __future__ import annotations

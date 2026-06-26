@@ -1,3 +1,7 @@
+# SPDX-License-Identifier: GPL-3.0-or-later
+# Copyright (C) 2026 CyberProff.no and contributors.
+# This file is part of CyberKey.
+
 """
 End-to-end tests for the CyberKey synthetic dry-run agent.
 

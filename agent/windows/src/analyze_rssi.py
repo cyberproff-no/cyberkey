@@ -1,3 +1,7 @@
+# SPDX-License-Identifier: GPL-3.0-or-later
+# Copyright (C) 2026 CyberProff.no and contributors.
+# This file is part of CyberKey.
+
 """
 CyberKey RSSI Analyzer
 
@@ -9,6 +13,7 @@ Purpose:
 import csv
 from collections import defaultdict
 from pathlib import Path
+from metadata import format_startup_banner
 
 LOG_FILE = Path(__file__).parent.parent / "logs" / "cyberkey_rssi_log.csv"
 
@@ -39,6 +44,7 @@ def analyze():
 
     print("==================================================")
     print("CyberKey RSSI Analysis")
+    print(format_startup_banner())
     print("==================================================")
 
     if not data:

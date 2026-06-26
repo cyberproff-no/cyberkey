@@ -1,3 +1,7 @@
+# SPDX-License-Identifier: GPL-3.0-or-later
+# Copyright (C) 2026 CyberProff.no and contributors.
+# This file is part of CyberKey.
+
 """
 CyberKey BLE Scanner - Phase 1 Test Tool
 
@@ -13,6 +17,7 @@ import time
 import json
 from pathlib import Path
 from bleak import BleakScanner
+from metadata import format_startup_banner
 
 CONFIG_FILE = Path(__file__).parent / "config.json"
 EXAMPLE_CONFIG_FILE = Path(__file__).parent / "config.example.json"
@@ -113,6 +118,7 @@ def detection_callback(device, advertisement_data):
 async def main():
     print("==================================================")
     print("CyberKey BLE Scanner (Data Collection) started")
+    print(format_startup_banner())
     print("==================================================")
 
     if config.get("discovery_mode", False):
